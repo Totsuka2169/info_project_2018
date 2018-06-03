@@ -4,16 +4,6 @@
 //Création de structures, ajout en tête, suppression d'élément, ...
 
 
-void visualiser_liste(T_SOMMET s) {
-	T_SOMMET p = s;									//Sommet de travail
-	L_ARC v = p.voisins;								//Pointeur sur le premier voisin
-	printf("Sommet %d relié à ", p.num);                                          //On affiche le sommet (son numéro)
-	while(v != NULL) {                                         			// Tant qu'on n'a pas atteint le dernier voisin
-		printf("%d (%lf), ",v->val.arrivee, v->val.cout);                          //On affiche l'arc (numéro du voisin et coût du trajet)
-		v=v->suiv;                                           			  // On passe au voisin suivant
-	}
-	printf("\n");                                               			// Retour à la ligne pour la lisibilité
-}
 
 
 //Libère une liste allouée dynamiquement
@@ -78,6 +68,18 @@ L_ARC supprimer_tete(L_ARC L) {
 	free(L);                                                    			// Libération de la mémoire du premier élément
 	return q;                                                 			// On renvoie q (donc la L_SOMMET initiale sans l'élément de tête)
 }
+
+void visualiser_liste(T_SOMMET s) {
+	T_SOMMET p = s;									//Sommet de travail
+	L_ARC v = p.voisins;								//Pointeur sur le premier voisin
+	printf("Sommet %d relié à ", p.num);                                          //On affiche le sommet (son numéro)
+	while(v != NULL) {                                         			// Tant qu'on n'a pas atteint le dernier voisin
+		printf("%d (%lf), ",v->val.arrivee, v->val.cout);                          //On affiche l'arc (numéro du voisin et coût du trajet)
+		v=v->suiv;                                           			  // On passe au voisin suivant
+	}
+	printf("\n");                                               			// Retour à la ligne pour la lisibilité
+}
+
 
 T_SOMMET* creer_chemin(T_SOMMET s) {							//Fonction de création d'un chemin
 	T_SOMMET* chemin = calloc(1, sizeof(*chemin));					//On alloue de la mémoire

@@ -29,12 +29,12 @@ void liberer_liste(L_ARC L)
 //}
 
 // Crée un sommet correspondant à la station lue dans le fichier
-T_SOMMET creer_sommet(int numero, double lat, double longi, char* line) {
+T_SOMMET creer_sommet(int numero, double lat, double longi, char* ligne) {
 	T_SOMMET* sommet = calloc(1, sizeof(*sommet));                			
 	sommet->num = numero;                                  				
 	sommet->x = lat;                                  				
 	sommet->y = longi;                                  				
-	strcpy(sommet->nom, line);                                  			                                 
+	strcpy(sommet->nom, ligne);                                  			                                 
 	sommet->voisins = NULL; 							                                     			
 	return *sommet;                                            			
 }

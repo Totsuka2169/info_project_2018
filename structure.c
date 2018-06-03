@@ -4,8 +4,8 @@
 //Création de structures, ajout en tête, suppression d'élément, ...
 
 
-void visualiser_liste(SOMMET s) {
-	SOMMET p = s;									//Sommet de travail
+void visualiser_liste(T_SOMMET s) {
+	T_SOMMET p = s;									//Sommet de travail
 	L_ARC v = p.voisins;								//Pointeur sur le premier voisin
 	printf("Sommet %d relié à ", p.num);                                          //On affiche le sommet (son numéro)
 	while(v != NULL) {                                         			// Tant qu'on n'a pas atteint le dernier voisin
@@ -25,28 +25,39 @@ void liberer_liste(L_ARC L)
 }
 
 // Crée un sommet correspondant à la station lue dans le fichier
-SOMMET creer_sommet(int numero, double lat, double longi, char* line) {
-	SOMMET* sommet = calloc(1, sizeof(*sommet));                			// On crée un pointeur sur un SOMMET et lui alloue de la mémoire
-	sommet->num = numero;                                  				// On ajoute le numéro du sommet
-	sommet->x = lat;                                  				// On ajoute la latitude
-	sommet->y = longi;                                  				// On ajoute la longitude
-	strcpy(sommet->nom, line);                                  			// On ajoute le nom
-	sommet->PCC = 0;                                            			// Initialisation du PCC
-	sommet->pere = NULL;                                        			// Initialisation arbitraire du père à NULL (pour le passage dans un tas)
-	sommet->voisins = NULL; 							// Initialisation de la liste des voisins
-	sommet->passage = 0;                                     			//Initialisation du passage à 0
-	return *sommet;                                            			// On renvoie le *SOMMET créé
+//T_SOMMET creer_sommet(int numero, double lat, double longi, char* line) {
+//	T_SOMMET* sommet = calloc(1, sizeof(*sommet));                			// On crée un pointeur sur un SOMMET et lui alloue de la mémoire
+//	sommet->num = numero;                                  				// On ajoute le numéro du sommet
+//	sommet->x = lat;                                  				// On ajoute la latitude
+//	sommet->y = longi;                                  				// On ajoute la longitude
+//	strcpy(sommet->nom, line);                                  			// On ajoute le nom
+//	sommet->PCC = 0;                                            			// Initialisation du PCC
+//	sommet->pere = NULL;                                        			// Initialisation arbitraire du père à NULL (pour le passage dans un tas)
+//	sommet->voisins = NULL; 							// Initialisation de la liste des voisins
+//	sommet->passage = 0;                                     			//Initialisation du passage à 0
+//	return *sommet;                                            			// On renvoie le *SOMMET créé
+//}
+
+// Crée un sommet correspondant à la station lue dans le fichier
+T_SOMMET creer_sommet(int numero, double lat, double longi, char* line) {
+	T_SOMMET* sommet = calloc(1, sizeof(*sommet));                			
+	sommet->num = numero;                                  				
+	sommet->x = lat;                                  				
+	sommet->y = longi;                                  				
+	strcpy(sommet->nom, line);                                  			                                 
+	sommet->voisins = NULL; 							                                     			
+	return *sommet;                                            			
 }
 
-ARC creer_arc(int arrivee, double cout) {						//Fonction de création d'un arc
-	ARC arc;
+T_ARC creer_arc(int arrivee, double cout) {						//Fonction de création d'un arc
+	T_ARC arc;
 	arc.arrivee = arrivee;								//On affecte les valeurs correspondantes
 	arc.cout = cout;
 	return arc;									//On renvoie l'arc crée
 }
 
 // Ajoute un élément contenant un pointeur sur un SOMMET à une liste
-L_ARC ajout_tete(L_ARC L, ARC nv_arc) {
+L_ARC ajout_tete(L_ARC L, T_ARC nv_arc) {
 	L_ARC p = calloc(1, sizeof(*p));                         			// On alloue de la mémoire à la liste de voisins
 	if(p == NULL) {                                             			// Si l'allocation est ratée
 		printf("Ajout impossible\n");                           		// On affiche l'erreur
@@ -68,13 +79,13 @@ L_ARC supprimer_tete(L_ARC L) {
 	return q;                                                 			// On renvoie q (donc la L_SOMMET initiale sans l'élément de tête)
 }
 
-SOMMET* creer_chemin(SOMMET s) {							//Fonction de création d'un chemin
-	SOMMET* chemin = calloc(1, sizeof(*chemin));					//On alloue de la mémoire
+T_SOMMET* creer_chemin(T_SOMMET s) {							//Fonction de création d'un chemin
+	T_SOMMET* chemin = calloc(1, sizeof(*chemin));					//On alloue de la mémoire
 	return NULL;									//On renvoie NULL
 }
 
-SOMMET* ajout_tete_chemin(SOMMET* chemin, SOMMET nv_sommet) {				//Fonction d'ajout en tête pour un chemin
-	SOMMET* p = calloc(1, sizeof(*p));						//On alloue de la mémoire à un sommet
+T_SOMMET* ajout_tete_chemin(T_SOMMET* chemin, T_SOMMET nv_sommet) {				//Fonction d'ajout en tête pour un chemin
+	T_SOMMET* p = calloc(1, sizeof(*p));						//On alloue de la mémoire à un sommet
 	if(p == NULL) {                                             			// Si l'allocation est ratée
 		printf("Ajout impossible\n");						//On affiche l'erreur
 		return NULL;								//On retourne NULL

@@ -61,13 +61,16 @@ typedef struct {
 
 
 
-L_ARC creer_liste();
 
 void liberer_liste(L_ARC L);
 
 T_SOMMET creer_sommet(int numero, double lat, double longi, char* line);
 
 T_ARC creer_arc(int arrivee, double cout);
+
+L_ARC creer_liste();
+
+int est_vide (L_ARC L);
 
 L_ARC ajout_tete(L_ARC L, T_ARC nv_arc);
 

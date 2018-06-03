@@ -1,6 +1,8 @@
-#ifndef __STRUCT_H_
-#define __STRUCT_H_
-
+#ifndef __STRUCTURE_H_
+#define __STRUCTURE_H_
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 //typedef struct SOMMET SOMMET;			//Structure sommet
@@ -57,5 +59,25 @@ typedef struct {
 } GRAPHE ;
 
 
+
+
+L_ARC creer_liste();
+
+void liberer_liste(L_ARC L);
+
+SOMMET creer_sommet(int numero, double lat, double longi, char* line);
+
+ARC creer_arc(int arrivee, double cout);
+
+L_ARC ajout_tete(L_ARC L, ARC nv_arc);
+
+L_ARC supprimer_tete(L_ARC L);
+
+void visualiser_liste(SOMMET s);
+
+
+SOMMET* creer_chemin(SOMMET s);
+
+SOMMET* ajout_tete_chemin(SOMMET* chemin, SOMMET nv_sommet);
 
 #endif

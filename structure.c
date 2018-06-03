@@ -46,6 +46,14 @@ T_ARC creer_arc(int arrivee, double cout) {						//Fonction de création d'un ar
 	return arc;									//On renvoie l'arc crée
 }
 
+L_ARC creer_liste(){
+	return(NULL);
+}
+
+int est_vide(L_ARC L){
+	return(!L);
+}	
+
 // Ajoute un élément contenant un pointeur sur un SOMMET à une liste
 L_ARC ajout_tete(L_ARC L, T_ARC nv_arc) {
 	L_ARC p = calloc(1, sizeof(*p));                         			// On alloue de la mémoire à la liste de voisins

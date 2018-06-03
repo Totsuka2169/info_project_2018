@@ -3,8 +3,6 @@
 
 
 
-typedef struct L_ARC* L_SOMMET;			//Liste des voisins
-
 //typedef struct SOMMET SOMMET;			//Structure sommet
 //struct SOMMET {				//Caractéristiques du sommet
 //	int num;				//Numéro du sommet
@@ -20,7 +18,7 @@ typedef struct {
 	int num;				
 	double x, y;				
 	char nom[128];				
-	struct L_ARC* voisins;			
+	L_ARC voisins;			
 } T_SOMMET;					
 
 

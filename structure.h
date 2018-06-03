@@ -19,7 +19,7 @@
 typedef struct { 					
 	int num;				
 	double x, y;				
-	char nom[128];				
+	char nom_ligne[128];				
 	L_ARC voisins;			
 } T_SOMMET;					
 

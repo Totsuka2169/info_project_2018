@@ -34,7 +34,7 @@ T_SOMMET creer_sommet(int numero, double lat, double longi, char* ligne) {
 	sommet->num = numero;                                  				
 	sommet->x = lat;                                  				
 	sommet->y = longi;                                  				
-	strcpy(sommet->nom, ligne);                                  			                                 
+	strcpy(sommet->nom_ligne, ligne);                                  			                                 
 	sommet->voisins = NULL; 							                                     			
 	return *sommet;                                            			
 }
@@ -121,6 +121,6 @@ T_SOMMET* ajout_tete_chemin(T_SOMMET* chemin, T_SOMMET nv_sommet) {
 	p->x = nv_sommet.x;
 	p->y = nv_sommet.y;
 	p->voisins = nv_sommet.voisins;
-	strcpy(p->nom, nv_sommet.nom);								
+	strcpy(p->nom_ligne, nv_sommet.nom_ligne);								
 	return p;									
 }

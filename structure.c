@@ -84,19 +84,33 @@ T_SOMMET* creer_chemin(T_SOMMET s) {							//Fonction de création d'un chemin
 	return NULL;									//On renvoie NULL
 }
 
-T_SOMMET* ajout_tete_chemin(T_SOMMET* chemin, T_SOMMET nv_sommet) {				//Fonction d'ajout en tête pour un chemin
-	T_SOMMET* p = calloc(1, sizeof(*p));						//On alloue de la mémoire à un sommet
-	if(p == NULL) {                                             			// Si l'allocation est ratée
-		printf("Ajout impossible\n");						//On affiche l'erreur
-		return NULL;								//On retourne NULL
+//T_SOMMET* ajout_tete_chemin(T_SOMMET* chemin, T_SOMMET nv_sommet) {				//Fonction d'ajout en tête pour un chemin
+//	T_SOMMET* p = calloc(1, sizeof(*p));						//On alloue de la mémoire à un sommet
+//	if(p == NULL) {                                             			// Si l'allocation est ratée
+//		printf("Ajout impossible\n");						//On affiche l'erreur
+//		return NULL;								//On retourne NULL
+//	}
+//	p->num = nv_sommet.num;								//assignation des valeurs du sommet
+//	p->x = nv_sommet.x;
+//	p->y = nv_sommet.y;
+//	p->PCC = nv_sommet.PCC;
+//	p->passage = nv_sommet.passage;
+//	p->voisins = nv_sommet.voisins;
+//	strcpy(p->nom, nv_sommet.nom);
+//	p->pere = chemin;								//On pointe sur la liste, ce qui ajoute le nouvel élément en tête
+//	return p;									//On retourne le nouveau chemin
+//}
+
+T_SOMMET* ajout_tete_chemin(T_SOMMET* chemin, T_SOMMET nv_sommet) {				
+	T_SOMMET* p = calloc(1, sizeof(*p));						
+	if(p == NULL) {                                             			
+		printf("Ajout impossible\n");						
+		return NULL;								
 	}
-	p->num = nv_sommet.num;								//assignation des valeurs du sommet
+	p->num = nv_sommet.num;								
 	p->x = nv_sommet.x;
 	p->y = nv_sommet.y;
-	p->PCC = nv_sommet.PCC;
-	p->passage = nv_sommet.passage;
 	p->voisins = nv_sommet.voisins;
-	strcpy(p->nom, nv_sommet.nom);
-	p->pere = chemin;								//On pointe sur la liste, ce qui ajoute le nouvel élément en tête
-	return p;									//On retourne le nouveau chemin
+	strcpy(p->nom, nv_sommet.nom);								
+	return p;									
 }

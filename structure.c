@@ -1,4 +1,4 @@
-#include "listes.h"
+#include "structure.h"
 
 //Dans ce fichier se trouvent les différentes fonctions de gestions des listes et structures
 //Création de structures, ajout en tête, suppression d'élément, ...
@@ -6,7 +6,7 @@
 
 void visualiser_liste(SOMMET s) {
 	SOMMET p = s;																																	//Sommet de travail
-	L_SOMMET v = p.voisins;																												//Pointeur sur le premier voisin
+	L_ARC v = p.voisins;																												//Pointeur sur le premier voisin
 	printf("Sommet %d relié à ", p.num);                                          //On affiche le sommet (son numéro)
 	while(v != NULL) {                                         										// Tant qu'on n'a pas atteint le dernier voisin
 		printf("%d (%lf), ",v->val.arrivee, v->val.cout);                           //On affiche l'arc (numéro du voisin et coût du trajet)
@@ -17,7 +17,7 @@ void visualiser_liste(SOMMET s) {
 
 
 //Libère une liste allouée dynamiquement
-void liberer_liste(L_SOMMET L)
+void liberer_liste(L_ARC L)
 {
 	while(L != NULL) {                                         										// Tant que la liste n'est pas vide
 		L = supprimer_tete(L);                                  										// Suppression de l'élément en tête
@@ -46,8 +46,8 @@ ARC creer_arc(int arrivee, double cout) {																			  //Fonction de cré
 }
 
 // Ajoute un élément contenant un pointeur sur un SOMMET à une liste
-L_SOMMET ajout_tete(L_SOMMET L, ARC nv_arc) {
-	L_SOMMET p = calloc(1, sizeof(*p));                         									// On alloue de la mémoire à la liste de voisins
+L_ARC ajout_tete(L_ARC L, ARC nv_arc) {
+	L_ARC p = calloc(1, sizeof(*p));                         									// On alloue de la mémoire à la liste de voisins
 	if(p == NULL) {                                             									// Si l'allocation est ratée
 		printf("Ajout impossible\n");                           										// On affiche l'erreur
 		return NULL;                                            										// On renvoie NULL
@@ -58,8 +58,8 @@ L_SOMMET ajout_tete(L_SOMMET L, ARC nv_arc) {
 }
 
 // Supprime l'élément en tête d'un liste
-L_SOMMET supprimer_tete(L_SOMMET L) {
-	L_SOMMET q;                                                										// On crée une L_SOMMET
+L_ARC supprimer_tete(L_ARC L) {
+	L_ARC q;                                                										// On crée une L_SOMMET
 	if(L == NULL) {                                            									  // Si la L_SOMMET était déjà vide
 		return NULL;                                            										// On renvoie NULL
 	}
